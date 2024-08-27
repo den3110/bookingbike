@@ -7,12 +7,16 @@ export enum Routes {
   Profile = 'Profile',
   Settings = 'Settings',
   Post = 'Post',
+  Account = "Account",
+  Balance = "Balance",
+  BikeListScreen = "BikeListScreen",
   Welcome= "Welcome",
   Register= "Register",
   VerifyOtp= "VerifyOtp",
   RegistrationComplete= "RegistrationComplete",
   CreatePassword= "CreatePassword",
-  VerifyPassword= "VerifyPassword"
+  VerifyPassword= "VerifyPassword",
+  RentBike= "RentBike",
 }
 
 /**
@@ -26,6 +30,7 @@ export type RootStackParams = {
   [Routes.RegistrationComplete]: undefined;
   [Routes.CreatePassword]: undefined
   [Routes.VerifyPassword]: undefined
+  
 };
 
 /**
@@ -35,6 +40,10 @@ export type ProfileStackParams = {
   [Routes.Profile]: undefined;
   [Routes.Settings]: undefined;
   [Routes.Post]: { id: string, username: string };
+  [Routes.Account]: {}
+  [Routes.Balance]: {}
+  [Routes.BikeListScreen]: {}
+  [Routes.RentBike]: {}
 };
 
 /**

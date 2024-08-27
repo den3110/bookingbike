@@ -1,4 +1,5 @@
 import useTheme from '@hooks/useTheme';
+import PromoScreen from '@modules/app/section/Home/Promo';
 import React from 'react';
 import { View, Text, Image, TextInput, Button, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
@@ -55,6 +56,7 @@ const HomeScreen = () => {
           </View>
         </View>
       </View>
+      <PromoScreen />
     </ScrollView>
   );
 };

@@ -2,10 +2,10 @@ import { ExpoConfig, ConfigContext } from "@expo/config";
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: "Milvasoft Expo BoilerPalte",
-  description: "Milvasoft Expo BoilerPalte Description",
+  name: "Cudi",
+  description: "Cudi Description",
   slug: "milvasoft-expo-boilerplate",
-  scheme: "com.milvasoft.expoboilerplate",
+  scheme: "com.ptg.cud",
   version: "1.0.0",
   sdkVersion: "51.0.0",
   orientation: "portrait",
@@ -25,7 +25,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     backgroundColor: "#ffffff",
   },
   ios: {
-    bundleIdentifier: "com.milvasoft.expoboilerplate",
+    bundleIdentifier: "com.ptg.cud",
     buildNumber: "1.0.0",
     infoPlist: {
       CFBundleAllowMixedLocalizations: true,
@@ -39,7 +39,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: "./src/assets/images/adaptive-icon.png",
       backgroundColor: "#ffffff",
     },
-    package: "com.milvasoft.expoboilerplate",
+    package: "com.ptg.cud",
     versionCode: 1,
   },
   updates: {

@@ -1,73 +1,167 @@
-/**
- * @author Ali Burhan Keskin <alikeskin@milvasoft.com>
- */
-import React, { useCallback } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { navigate } from "@helpers/router";
-import Routes, { ProfileStackParams } from "@src/utils/Routes";
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
+import { useNavigation } from '@react-navigation/native';
+import Routes from '@utils/Routes';
+import React from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-function Profile() {
-  const navigation = useNavigation<StackNavigationProp<ProfileStackParams>>();
-
-  const goToSettings = useCallback(() => navigate(Routes.Settings), []);
-
-  const goToPost = useCallback(
-    () => navigation.navigate(Routes.Post, { id: "1", username: "Milvasoft" }),
-    [navigation]
-  );
+const Profile = () => {
+  const navigation= useNavigation()
 
   return (
-    <SafeAreaView style={styles.safeView}>
-      <View style={styles.root}>
-        <Text style={styles.fontBlack}>Ali Burhan Keskin</Text>
-        <View style={styles.siginButton}>
-          <Button onPress={goToPost} title="Go To Post" />
-        </View>
-        <View style={styles.siginButton}>
-          <Button onPress={goToSettings} title=" Go To Settings" />
+    <ScrollView style={styles.container}>
+      {/* Header Section */}
+      <View style={styles.headerContainer}>
+        <View style={styles.profileInfo}>
+          <TouchableOpacity onPress={()=> {
+            navigation.navigate(Routes.Balance)
+          }}>
+            <Image
+              source={{ uri: 'https://res.cloudinary.com/cockbook/image/upload/v1724683117/single/male_sdefma.png' }} // Thay URL bằng hình ảnh avatar của bạn
+              style={styles.avatar}
+            />
+          </TouchableOpacity>
+          <View style={styles.userInfo}>
+            <Text style={styles.userName}>Sơn Hoàng</Text>
+            <Text style={styles.userPhone}>+84 32 972 999</Text>
+          </View>
         </View>
       </View>
-    </SafeAreaView>
-  );
-}
 
-export default Profile;
+      {/* Menu Section */}
+      <View style={styles.menuSection}>
+        <TouchableOpacity style={styles.menuItem} onPress={()=> {
+          navigation.navigate(Routes.Account)
+        }}>
+          <View style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: 'space-between', alignItems: "center"}}>
+            <Text style={styles.menuText}>Thông tin của tôi</Text>
+            <Icon name="keyboard-arrow-right" size={24} color="#333" />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.menuItem}>
+          <View style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: 'space-between', alignItems: "center"}}>
+            <Text style={styles.menuText}>Xe của tôi</Text>
+            <Icon name="keyboard-arrow-right" size={24} color="#333" />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.menuItem}>
+          <View style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: 'space-between', alignItems: "center"}}>
+            <Text style={styles.menuText}>Xe yêu thích</Text>
+            <Icon name="keyboard-arrow-right" size={24} color="#333" />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.menuItem}>
+          <View style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: 'space-between', alignItems: "center"}}>
+            <Text style={styles.menuText}>Địa chỉ của tôi</Text>
+            <Icon name="keyboard-arrow-right" size={24} color="#333" />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.menuItem}>
+          <View style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: 'space-between', alignItems: "center"}}>
+            <Text style={styles.menuText}>Ví Cudi</Text>
+            <Icon name="keyboard-arrow-right" size={24} color="#333" />
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      {/* Settings Section */}
+      <View style={styles.settingsSection}>
+        <TouchableOpacity style={styles.menuItem}>
+          <View style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: 'space-between', alignItems: "center"}}>
+            <Text style={styles.menuText}>Đổi mật khẩu</Text>
+            <Icon name="keyboard-arrow-right" size={24} color="#333" />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.menuItem}>
+          <View style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: 'space-between', alignItems: "center"}}>
+            <Text style={styles.menuText}>Xóa tài khoản</Text>
+            <Icon name="keyboard-arrow-right" size={24} color="#333" />
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      {/* Logout Section */}
+      <TouchableOpacity style={styles.logoutButton}>
+      <View style={{width: "100%", display: "flex", flexDirection: "row", justifyContent: 'center', alignItems: "center"}}>
+        <View style={{display: "flex", justifyContent: 'center',alignItems: "center"}}>
+          <Icon name="logout" size={24} color="#F44336"  />
+        </View>
+        <Text style={styles.logoutText}>Đăng xuất</Text>
+      </View>
+      </TouchableOpacity>
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
-  safeView: {
-    flex: 1,
-  },
-
-  root: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
   container: {
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 30,
+    flex: 1,
+    backgroundColor: '#F5F5F5',
   },
-
-  fontBlack: {
-    fontFamily: "Black",
+  headerContainer: {
+    backgroundColor: '#4CAF50', // Màu nền của phần header
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
-
-  counter: {
-    marginTop: 30,
-    fontSize: 30,
-    color: "red",
+  profileInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-
-  button: {
-    marginTop: 20,
+  avatar: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 12,
   },
-
-  siginButton: {
-    marginTop: 50,
+  userInfo: {
+    justifyContent: 'center',
+  },
+  userName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+  },
+  userPhone: {
+    fontSize: 14,
+    color: '#FFFFFF',
+  },
+  menuSection: {
+    marginTop: 16,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    padding: 8,
+  },
+  settingsSection: {
+    marginTop: 16,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    padding: 8,
+  },
+  menuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E0E0E0',
+  },
+  menuText: {
+    fontSize: 16,
+    color: '#333333',
+  },
+  logoutButton: {
+    marginTop: 16,
+    backgroundColor: '#F5F5F5',
+    paddingVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+  },
+  logoutText: {
+    fontSize: 16,
+    color: '#F44336',
+    fontWeight: 'bold',
   },
 });
+
+export default Profile;
