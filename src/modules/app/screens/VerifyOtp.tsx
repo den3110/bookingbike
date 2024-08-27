@@ -49,6 +49,7 @@ const OTPVerification = () => {
         handleTextChange={(text) => setCode(text)}
         inputCount={4}
         tintColor="#ccc"
+        returnKeyType={"done"}
       />
       <TouchableOpacity style={styles.button} onPress={handleResend} disabled={timer > 0}>
         <Text style={styles.buttonText}>

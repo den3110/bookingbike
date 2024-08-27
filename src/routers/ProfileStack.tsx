@@ -1,5 +1,5 @@
 /**
- * @author Ali Burhan Keskin <alikeskin@milvasoft.com>
+ * @author datist
  */
 import * as React from "react";
 import { createStackNavigator } from "@react-navigation/stack";

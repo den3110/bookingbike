@@ -37,6 +37,7 @@ const VerifyPassword = () => {
         containerStyle={styles.passwordInputContainer}
         textInputStyle={styles.passwordInput}
         secureTextEntry={!showPassword}
+        returnKeyType={"done"}
       />
       <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
         <Text style={styles.continueButtonText}>Đăng nhập</Text>

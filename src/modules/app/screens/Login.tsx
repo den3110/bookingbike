@@ -8,6 +8,8 @@ import {
   TextInput,
   Linking,
   Image,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { useDispatch } from "react-redux";
 import { showToast } from "@helpers/toast/showToast";
@@ -55,10 +57,10 @@ export default function Login() {
     // dispatch(SetUser({ name: "Ali Burhan Keskin" }));
   }, []);
 
-  const handleSubmit= ()=> {
-    navigation.navigate(Routes.VerifyOtp)
+  const handleSubmit = () => {
+    navigation.navigate(Routes.VerifyOtp);
     // dispatch(SetUser({ name: "Son Hoang" }));
-  }
+  };
 
   return (
     <View style={styles.root}>
@@ -75,7 +77,7 @@ export default function Login() {
             <View>
               <View style={styles.welcome}>
                 <Image
-                  source={require('../../../assets/images/symbol.png')}
+                  source={require("../../../assets/images/symbol.png")}
                   style={styles.image}
                 />
               </View>
@@ -107,7 +109,7 @@ export default function Login() {
                     style={{
                       padding: 10,
                       backgroundColor: "#f2f2f2",
-                      width: 100,
+                      width: 100, borderRadius: 10
                     }}
                   >
                     <View>
@@ -128,34 +130,45 @@ export default function Login() {
                         borderRadius: 10,
                       }}
                     >
-                      <TextInput
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          padding: 5,
-                          fontSize: 18,
-                        }}
-                        keyboardType="number-pad"
-                        placeholder="Nhập số điện thoại của bạn"
-                      />
+                      <TouchableWithoutFeedback>
+                        <TextInput
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            padding: 5,
+                            fontSize: 18,
+                          }}
+                          keyboardType="number-pad"
+                          placeholder="Nhập số điện thoại của bạn"
+                          returnKeyType={"done"}
+                          onSubmitEditing={Keyboard.dismiss}
+                        />
+                      </TouchableWithoutFeedback>
                     </View>
                   </View>
                 </View>
                 <View style={styles.container}>
-                  <Checkbox
-                    status={checked ? "checked" : "unchecked"}
-                    onPress={() => {
-                      setChecked(!checked);
-                    }}
-                    color="#4CAF50" // Màu xanh lá cây cho checkbox
-                  />
-                  <Text style={styles.text}>
-                    Bằng cách nhấn tiếp tục, bạn đã đồng ý với các{" "}
-                    <Text style={styles.link} onPress={handleLinkPress}>
-                      Điều khoản và điều kiện
-                    </Text>{" "}
-                    của Cudi.
-                  </Text>
+                  <View style={{paddingRight: 5}}>
+                    <View style={{backgroundColor: "#f2f2f2"}}>
+                      <Checkbox
+                        status={checked ? "checked" : "unchecked"}
+                        onPress={() => {
+                          setChecked(!checked);
+                        }}
+                        
+                        color="#4CAF50" // Màu xanh lá cây cho checkbox
+                      />
+                    </View>
+                  </View>
+                  <View>
+                    <Text style={styles.text}>
+                      Bằng cách nhấn tiếp tục, bạn đã đồng ý với các {" "}
+                      <Text style={styles.link} onPress={handleLinkPress}>
+                        Điều khoản và điều kiện
+                      </Text>{" "}
+                      của Cudi.
+                    </Text>
+                  </View>
                 </View>
                 <View style={styles.buttonStyle}>
                   <TouchableHighlight
@@ -213,19 +226,26 @@ export default function Login() {
             >
               <View style={styles.option}>
                 <Text style={styles.optionText}>Zalo</Text>
-                <RadioButton value="zalo" />
+                <View style={{backgroundColor: "#f2f2f2", borderRadius: "50%"}}>
+                  <RadioButton value="zalo" />
+                </View>
               </View>
               <View style={styles.option}>
                 <Text style={styles.optionText}>Tin nhắn điện thoại</Text>
-                <RadioButton value="sms" />
+                <View style={{backgroundColor: "#f2f2f2", borderRadius: "50%"}}>
+                  <RadioButton value="sms" />
+                </View>
               </View>
             </RadioButton.Group>
           </View>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.cancelButton}>
+            <TouchableOpacity onPress={()=> bottomSheetRef.current?.close()} style={styles.cancelButton}>
               <Text style={styles.cancelButtonText}>Hủy</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={handleSubmit} style={styles.submitButton}>
+            <TouchableOpacity
+              onPress={handleSubmit}
+              style={styles.submitButton}
+            >
               <Text style={styles.submitButtonText}>Gửi mã OTP</Text>
             </TouchableOpacity>
           </View>
@@ -246,12 +266,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     padding: 10,
+    display: "flex",
   },
   welcome: {
     fontFamily: "Bold",
     fontSize: 25,
     textAlign: "center",
-    display: "flex", justifyContent: "center", alignItems: "center"
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   buttonStyle: {
     marginTop: 20,
@@ -313,7 +336,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   submitButton: {
-    backgroundColor: "#4CAF50",
+    backgroundColor: "#2b9060",
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
@@ -326,6 +349,6 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     marginBottom: 20,
-    objectFit: "contain"
+    objectFit: "contain",
   },
 });

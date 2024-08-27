@@ -1,5 +1,5 @@
 /**
- * @author Ali Burhan Keskin <alikeskin@milvasoft.com>
+ * @author datist
  */
 /**
  * Enum representing the different types of data that can be stored in the storage.

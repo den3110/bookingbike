@@ -1,6 +1,6 @@
 
 /**
- * @author Ali Burhan Keskin <alikeskin@milvasoft.com>
+ * @author datist
  */
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { isObjectLike } from '@helpers/global';

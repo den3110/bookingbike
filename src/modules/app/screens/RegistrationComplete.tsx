@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Keyboard } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Assuming you're using Expo, for the back arrow icon
 import { useNavigation } from '@react-navigation/native';
 import Routes from '@utils/Routes';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const RegistrationComplete = () => {
   const [name, setName] = useState('');
@@ -23,47 +24,55 @@ const RegistrationComplete = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={() => { /* handle back navigation */ }}>
-        <Ionicons name="arrow-back" size={24} color="black" />
-      </TouchableOpacity>
-      <Text style={styles.title}>Hoàn tất đăng ký tài khoản</Text>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Họ tên <Text style={styles.required}>*</Text></Text>
-        <TextInput
-          style={[styles.input, name && styles.inputActive]}
-          placeholder="Họ tên"
-          value={name}
-          onChangeText={setName}
-        />
-        {name && (
-          <TouchableOpacity style={styles.clearButton} onPress={() => setName('')}>
-            <Ionicons name="close-circle" size={20} color="#ccc" />
-          </TouchableOpacity>
-        )}
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.backButton} onPress={() => { navigation.goBack() }}>
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+        <Text style={styles.title}>Hoàn tất đăng ký tài khoản</Text>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Họ tên <Text style={styles.required}>*</Text></Text>
+          <TextInput
+            style={[styles.input, name && styles.inputActive]}
+            placeholder="Họ tên"
+            value={name}
+            onChangeText={setName}
+            returnKeyType={"done"}
+            onSubmitEditing={Keyboard.dismiss}
+          />
+          {name && (
+            <TouchableOpacity style={styles.clearButton} onPress={() => setName('')}>
+              <Ionicons name="close-circle" size={20} color="#ccc" />
+            </TouchableOpacity>
+          )}
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Email</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            returnKeyType={"done"}
+                            onSubmitEditing={Keyboard.dismiss}
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Mã giới thiệu</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Mã giới thiệu"
+            value={referralCode}
+            onChangeText={setReferralCode}
+            returnKeyType={"done"}
+                            onSubmitEditing={Keyboard.dismiss}
+          />
+        </View>
+        <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
+          <Text style={styles.continueButtonText}>Tiếp tục</Text>
+        </TouchableOpacity>
       </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Email</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Mã giới thiệu</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Mã giới thiệu"
-          value={referralCode}
-          onChangeText={setReferralCode}
-        />
-      </View>
-      <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
-        <Text style={styles.continueButtonText}>Tiếp tục</Text>
-      </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -1,5 +1,5 @@
 /**
- * @author Ali Burhan Keskin <alikeskin@milvasoft.com>
+ * @author datist
 */
 import { Scope, TranslateOptions } from 'i18n-js';
 import i18n from '@providers/Localization';

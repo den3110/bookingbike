@@ -1,5 +1,4 @@
 /**
- * @author Ali Burhan Keskin <alikeskin@milvasoft.com>
  */
 import React, { useEffect } from "react";
 import { enableScreens } from "react-native-screens";

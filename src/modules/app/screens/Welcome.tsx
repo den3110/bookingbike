@@ -1,5 +1,5 @@
 /**
- * @author Ali Burhan Keskin <alikeskin@milvasoft.com>
+ * @author datist
  */
 import React, { useCallback } from "react";
 import { View, Text, StyleSheet, Button, TouchableHighlight, Image } from "react-native";

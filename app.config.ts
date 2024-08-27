@@ -4,7 +4,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: "Cudi",
   description: "Cudi Description",
+<<<<<<< HEAD
   slug: "milvasoft-expo-boilerplate",
+=======
+  slug: "cudi",
+>>>>>>> e0fd3446b8fbe3076f3342840b4372277798e2d6
   scheme: "com.ptg.cud",
   version: "1.0.0",
   sdkVersion: "51.0.0",

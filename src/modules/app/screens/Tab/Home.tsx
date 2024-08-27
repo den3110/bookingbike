@@ -1,7 +1,7 @@
 import useTheme from '@hooks/useTheme';
 import PromoScreen from '@modules/app/section/Home/Promo';
 import React from 'react';
-import { View, Text, Image, TextInput, Button, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, TextInput, Button, StyleSheet, TouchableOpacity, ScrollView, Keyboard } from 'react-native';
 
 const HomeScreen = () => {
   const theme= useTheme()
@@ -14,16 +14,18 @@ const HomeScreen = () => {
       </View>
       
       <View style={styles.searchBox}>
-        <View style={{paddingVertical: 20, backgroundColor: theme.primary, display: "flex", justifyContent: 'center', alignItems: "center", flexDirection: "row"}}>
+        <View style={{paddingVertical: 20, backgroundColor: theme.primary, display: "flex", justifyContent: 'center', alignItems: "center", flexDirection: "row", borderTopLeftRadius: 20, borderTopRightRadius: 20}}>
           <Image source={require("../../../../assets/images/vehicle.png")} style={{width: 40, height: 20, objectFit: "contain"}} />
           <Text style={styles.searchTitle}>Tìm thuê xe</Text>
         </View>
         <View style={{padding: 20}}>
           <View style={styles.inputContainer}>
-            <TextInput placeholder="Địa điểm" style={styles.input} />
+            <TextInput returnKeyType={"done"}
+                          onSubmitEditing={Keyboard.dismiss} placeholder="Địa điểm" style={styles.input} />
           </View>
           <View style={styles.inputContainer}>
-            <TextInput placeholder="Thời gian thuê" style={styles.input} />
+            <TextInput returnKeyType={"done"}
+                          onSubmitEditing={Keyboard.dismiss} placeholder="Thời gian thuê" style={styles.input} />
           </View>
           
           <TouchableOpacity style={styles.searchButton}>
@@ -96,7 +98,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 5,
     elevation: 5,
-    overflow: "hidden"
   },
   searchTitle: {
     fontSize: 18,

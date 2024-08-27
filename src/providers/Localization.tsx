@@ -1,5 +1,5 @@
 /**
- * @author Ali Burhan Keskin <alikeskin@milvasoft.com>
+ * @author datist
  */
 import moment from "moment";
 import "moment/min/locales";
