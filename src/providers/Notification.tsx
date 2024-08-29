@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Platform } from "react-native";
 import * as Constants from "expo-constants";
 import * as Device from "expo-device";
@@ -6,6 +6,7 @@ import * as Notifications from "expo-notifications";
 import { useDispatch } from "react-redux";
 import { SetExpoToken } from "@modules/app/redux/appSlice";
 import authApi from "@modules/app/api/auth/authApi";
+import { AppContext } from "./AppProvider";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -17,10 +18,12 @@ Notifications.setNotificationHandler({
 
 const Notification: React.FC<any> = () => {
   const dispatch = useDispatch();
+  const {setDeviceId }= useContext(AppContext)
 
   useEffect(() => {
     try {
       registerForPushNotificationsAsync().then(async (token?: String) => {
+        setDeviceId(token)
         try {
           await authApi.postDeviceId({deviceId: token});
           dispatch(SetExpoToken(token))

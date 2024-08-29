@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import Routes from '@utils/Routes';
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -9,52 +9,56 @@ const BalanceScreen :React.FC = () => {
   const navigation= useNavigation()
 
   return (
-    <View style={styles.container}>
-      {/* Header */}
-      <TouchableOpacity style={styles.backButton}>
-        <Icon name="arrow-back" size={24} color="#FFFFFF" />
-      </TouchableOpacity>
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.container}>
+        {/* Header */}
+        <TouchableOpacity onPress={()=> {
+          navigation.goBack()
+        }} style={styles.backButton}>
+          <Icon name="arrow-back" size={24} color="#FFFFFF" />
+        </TouchableOpacity>
 
-      {/* Gradient Background */}
-      <LinearGradient
-       colors={['#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#388E3C']}// Bạn có thể thay đổi các màu gradient ở đây
-        style={styles.gradientBackground}
-      >
-        {/* Balance and Image Section */}
-        <View style={styles.balanceContainer}>
-          <Text style={styles.balanceText}>Số dư : <Text style={styles.balanceAmount}>680.000</Text></Text>
-          <View>
-            <Image
-                source={{ uri: 'https://res.cloudinary.com/cockbook/image/upload/v1724684765/single/Vector_Smart_Object__4_-removebg-preview_kkx1kh.png' }} // Thay đổi URL của hình ảnh
-                style={styles.balanceImage}
-            />
+        {/* Gradient Background */}
+        <LinearGradient
+        colors={['#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#388E3C']}// Bạn có thể thay đổi các màu gradient ở đây
+          style={styles.gradientBackground}
+        >
+          {/* Balance and Image Section */}
+          <View style={styles.balanceContainer}>
+            <Text style={styles.balanceText}>Số dư : <Text style={styles.balanceAmount}>680.000</Text></Text>
+            <View>
+              <Image
+                  source={{ uri: 'https://res.cloudinary.com/cockbook/image/upload/v1724684765/single/Vector_Smart_Object__4_-removebg-preview_kkx1kh.png' }} // Thay đổi URL của hình ảnh
+                  style={styles.balanceImage}
+              />
+            </View>
           </View>
-        </View>
-      </LinearGradient>
+        </LinearGradient>
 
-      {/* Options Section */}
-      <View style={styles.optionsContainer}>
-        <View style={styles.optionItem}>
-          <Icon name="directions-car" size={20} color="#757575" />
-          <TouchableOpacity onPress={()=> {
-            navigation.navigate(Routes.BikeListScreen)
-          }} style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>Danh sách xe</Text>
-            <Text style={styles.optionSubText}>Quản lý xe đang thuê</Text>
-          </TouchableOpacity>
-          <Icon name="chevron-right" size={24} color="#757575" />
-        </View>
-
-        <View style={styles.optionItem}>
-          <Icon name="add-circle-outline" size={20} color="#757575" />
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>Đăng ký cho thuê xe</Text>
-            <Text style={styles.optionSubText}>Quản lý xe đang thuê</Text>
+        {/* Options Section */}
+        <View style={styles.optionsContainer}>
+          <View style={styles.optionItem}>
+            <Icon name="directions-car" size={20} color="#757575" />
+            <TouchableOpacity onPress={()=> {
+              navigation.navigate(Routes.BikeListScreen)
+            }} style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>Danh sách xe</Text>
+              <Text style={styles.optionSubText}>Quản lý xe đang thuê</Text>
+            </TouchableOpacity>
+            <Icon name="chevron-right" size={24} color="#757575" />
           </View>
-          <Icon name="chevron-right" size={24} color="#757575" />
+
+          <View style={styles.optionItem}>
+            <Icon name="add-circle-outline" size={20} color="#757575" />
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>Đăng ký cho thuê xe</Text>
+              <Text style={styles.optionSubText}>Quản lý xe đang thuê</Text>
+            </View>
+            <Icon name="chevron-right" size={24} color="#757575" />
+          </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

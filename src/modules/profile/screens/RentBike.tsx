@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const RentBike: React.FC = () => {
@@ -28,52 +28,54 @@ const RentBike: React.FC = () => {
   ];
 
   return (
-    <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={()=> {navigation.goBack()}} style={styles.backButton}>
-          <Icon name="arrow-back" size={24} color="#fff" />
-        </TouchableOpacity>
-        <Text style={styles.title}>Danh sách xe</Text>
-      </View>
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.container}>
+        {/* Header */}
+        <View style={styles.header}>
+          <TouchableOpacity onPress={()=> {navigation.goBack()}} style={styles.backButton}>
+            <Icon name="arrow-back" size={24} color="#fff" />
+          </TouchableOpacity>
+          <Text style={styles.title}>Danh sách xe</Text>
+        </View>
 
-      {/* Filters */}
-      <View style={styles.filters}>
-        <TouchableOpacity style={styles.filterButton}>
-          <Icon name="refresh" size={24} color="#000" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.filterButton}>
-          <Icon name="car-outline" size={18} color="#000" />
-          <Text style={styles.filterText}>Loại xe</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.filterButton}>
-          <Icon name="star-outline" size={18} color="#000" />
-          <Text style={styles.filterText}>Chủ xe uy tín</Text>
-        </TouchableOpacity>
-      </View>
+        {/* Filters */}
+        <View style={styles.filters}>
+          <TouchableOpacity style={styles.filterButton}>
+            <Icon name="refresh" size={24} color="#000" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.filterButton}>
+            <Icon name="car-outline" size={18} color="#000" />
+            <Text style={styles.filterText}>Loại xe</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.filterButton}>
+            <Icon name="star-outline" size={18} color="#000" />
+            <Text style={styles.filterText}>Chủ xe uy tín</Text>
+          </TouchableOpacity>
+        </View>
 
-      {/* Bike List */}
-      <FlatList
-        data={bikes}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.bikeItem}>
-            <Image source={{ uri: item.image }} style={styles.bikeImage} />
-            <View style={styles.bikeDetails}>
-              <Text style={styles.bikeTitle}>{item.title}</Text>
-              <Text style={styles.bikeLocation}>{item.location}</Text>
-              <View style={styles.bikeStats}>
-                <Text style={styles.rating}>⭐ {item.rating}</Text>
-                <Text style={styles.trips}>🛵 {item.trips} chuyến</Text>
+        {/* Bike List */}
+        <FlatList
+          data={bikes}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <View style={styles.bikeItem}>
+              <Image source={{ uri: item.image }} style={styles.bikeImage} />
+              <View style={styles.bikeDetails}>
+                <Text style={styles.bikeTitle}>{item.title}</Text>
+                <Text style={styles.bikeLocation}>{item.location}</Text>
+                <View style={styles.bikeStats}>
+                  <Text style={styles.rating}>⭐ {item.rating}</Text>
+                  <Text style={styles.trips}>🛵 {item.trips} chuyến</Text>
+                </View>
               </View>
+              <Text style={styles.price}>{item.price}</Text>
             </View>
-            <Text style={styles.price}>{item.price}</Text>
-          </View>
-        )}
-        contentContainerStyle={styles.bikeList}
-      />
+          )}
+          contentContainerStyle={styles.bikeList}
+        />
 
-    </View>
+      </View>
+    </SafeAreaView>
   );
 };
 

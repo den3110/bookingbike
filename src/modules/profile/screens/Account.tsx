@@ -1,101 +1,108 @@
+import { AppContext } from "@providers/AppProvider";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useContext } from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity, SafeAreaView } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 const AccountScreen = () => {
   const navigation= useNavigation()
+  const {deviceId }= useContext(AppContext)
 
   return (
-    <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={()=> {
-            navigation.goBack()
-        }}>
-          <Icon name="arrow-back" size={24} color="#4CAF50" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Tài khoản của tôi</Text>
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.container}>
+        {/* Header */}
+        <View style={styles.header}>
+          <TouchableOpacity onPress={()=> {
+              navigation.goBack()
+          }}>
+            <Icon name="arrow-back" size={24} color="#4CAF50" />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Tài khoản của tôi</Text>
+        </View>
+
+        {/* Profile Section */}
+        <View style={styles.profileSection}>
+          <Image
+            source={{ uri: "https://res.cloudinary.com/cockbook/image/upload/v1724683117/single/male_sdefma.png" }} // Thay đổi đường dẫn URL của avatar
+            style={styles.avatar}
+          />
+          <Text style={styles.userName}>Sơn Hoàng</Text>
+        </View>
+
+        {/* Verification Section */}
+        <View style={styles.verificationSection}>
+          <View style={styles.verificationItem}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.verificationText}>Giấy phép lái xe</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <View style={styles.verificationStatus}>
+                <Icon name="error-outline" size={16} color="#FFC107" />
+                <Text style={styles.statusTextPending}>Chưa xác thực</Text>
+              </View>
+            </View>
+            <View style={{ flex: 1 }}>
+              <TouchableOpacity>
+                <Text style={styles.verifyNow}>Xác thực ngay</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.verificationItem}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.verificationText}>Giấy phép lái xe</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <View style={styles.verificationStatus}>
+                <Icon name="check-circle" size={16} color="#4CAF50" />
+                <Text style={styles.statusTextVerified}>Đã xác thực</Text>
+              </View>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.contactInfo}>+84329729999</Text>
+            </View>
+          </View>
+
+          <View style={styles.verificationItem}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.verificationText}>Email</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <View style={styles.verificationStatus}>
+                <Icon name="error-outline" size={16} color="#FFC107" />
+                <Text style={styles.statusTextPending}>Chưa xác thực</Text>
+              </View>
+            </View>
+            <View style={{ flex: 1 }}>
+              <TouchableOpacity>
+                <Text style={styles.verifyNow}>Xác thực ngay</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.verificationItem}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.verificationText}>Facebook</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <View style={styles.verificationStatus}>
+                <Icon name="error-outline" size={16} color="#FFC107" />
+                <Text style={styles.statusTextPending}>Chưa xác thực</Text>
+              </View>
+            </View>
+            <View style={{ flex: 1 }}>
+              <TouchableOpacity>
+                <Text style={styles.verifyNow}>Liên kết ngay</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View>
+            <Text>{deviceId}</Text>
+          </View>
+        </View>
       </View>
-
-      {/* Profile Section */}
-      <View style={styles.profileSection}>
-        <Image
-          source={{ uri: "https://res.cloudinary.com/cockbook/image/upload/v1724683117/single/male_sdefma.png" }} // Thay đổi đường dẫn URL của avatar
-          style={styles.avatar}
-        />
-        <Text style={styles.userName}>Sơn Hoàng</Text>
-      </View>
-
-      {/* Verification Section */}
-      <View style={styles.verificationSection}>
-        <View style={styles.verificationItem}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.verificationText}>Giấy phép lái xe</Text>
-          </View>
-          <View style={{ flex: 1 }}>
-            <View style={styles.verificationStatus}>
-              <Icon name="error-outline" size={16} color="#FFC107" />
-              <Text style={styles.statusTextPending}>Chưa xác thực</Text>
-            </View>
-          </View>
-          <View style={{ flex: 1 }}>
-            <TouchableOpacity>
-              <Text style={styles.verifyNow}>Xác thực ngay</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.verificationItem}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.verificationText}>Giấy phép lái xe</Text>
-          </View>
-          <View style={{ flex: 1 }}>
-            <View style={styles.verificationStatus}>
-              <Icon name="check-circle" size={16} color="#4CAF50" />
-              <Text style={styles.statusTextVerified}>Đã xác thực</Text>
-            </View>
-          </View>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.contactInfo}>+84329729999</Text>
-          </View>
-        </View>
-
-        <View style={styles.verificationItem}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.verificationText}>Email</Text>
-          </View>
-          <View style={{ flex: 1 }}>
-            <View style={styles.verificationStatus}>
-              <Icon name="error-outline" size={16} color="#FFC107" />
-              <Text style={styles.statusTextPending}>Chưa xác thực</Text>
-            </View>
-          </View>
-          <View style={{ flex: 1 }}>
-            <TouchableOpacity>
-              <Text style={styles.verifyNow}>Xác thực ngay</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={styles.verificationItem}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.verificationText}>Facebook</Text>
-          </View>
-          <View style={{ flex: 1 }}>
-            <View style={styles.verificationStatus}>
-              <Icon name="error-outline" size={16} color="#FFC107" />
-              <Text style={styles.statusTextPending}>Chưa xác thực</Text>
-            </View>
-          </View>
-          <View style={{ flex: 1 }}>
-            <TouchableOpacity>
-              <Text style={styles.verifyNow}>Liên kết ngay</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

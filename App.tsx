@@ -10,6 +10,7 @@ import Store from "./src/store";
 import RootNavigation from "./src/routers";
 import CustomProvider from "./src/providers";
 import ErrorBoundary from "./src/providers/ErrorBoundary";
+import AppProvider from "./src/providers/AppProvider";
 
 enableScreens();
 
@@ -26,13 +27,15 @@ function App() {
   return (
     // @ts-ignore
     <ErrorBoundary>
-      <Provider store={Store}>
-        {/* @ts-ignore */}
-        <CustomProvider>
+      <AppProvider>
+        <Provider store={Store}>
           {/* @ts-ignore */}
-          <RootNavigation />
-        </CustomProvider>
-      </Provider>
+          <CustomProvider>
+            {/* @ts-ignore */}
+            <RootNavigation />
+          </CustomProvider>
+        </Provider>
+      </AppProvider>
     </ErrorBoundary>
   );
 }
