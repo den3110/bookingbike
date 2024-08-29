@@ -39,7 +39,7 @@ export default function Login() {
   };
 
   const bottomSheetRef = useRef(null);
-  const snapPoints = useMemo(() => ["25%", "40%"], []);
+  const snapPoints = useMemo(() => ["25%", "45%"], []);
   const [selectedOption, setSelectedOption] = useState("zalo"); // Trạng thái cho RadioButton
 
   const handleRadioChange = (value) => {
@@ -226,13 +226,13 @@ export default function Login() {
             >
               <View style={styles.option}>
                 <Text style={styles.optionText}>Zalo</Text>
-                <View style={{backgroundColor: "#f2f2f2", borderRadius: "50%"}}>
+                <View style={{backgroundColor: "#f2f2f2", borderRadius: 80}}>
                   <RadioButton value="zalo" />
                 </View>
               </View>
               <View style={styles.option}>
                 <Text style={styles.optionText}>Tin nhắn điện thoại</Text>
-                <View style={{backgroundColor: "#f2f2f2", borderRadius: "50%"}}>
+                <View style={{backgroundColor: "#f2f2f2", borderRadius: 80}}>
                   <RadioButton value="sms" />
                 </View>
               </View>

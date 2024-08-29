@@ -2,7 +2,7 @@
  * Enum representing the available routes in the application.
  */
 export enum Routes {
-  Home = 'Home',
+  Home = 'HomeTab',
   Login = 'Login',
   Profile = 'Profile',
   Settings = 'Settings',

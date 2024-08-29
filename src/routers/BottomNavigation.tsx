@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
 /**
  * @author datist
  */
->>>>>>> e0fd3446b8fbe3076f3342840b4372277798e2d6
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";

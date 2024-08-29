@@ -13,6 +13,7 @@
     "@react-navigation/stack": "^6.3.25",
     "@reduxjs/toolkit": "^2.2.1",
     "@testing-library/react-native": "^12.4.3",
+    "axios": "^1.7.5",
     "expo": "^51.0.20",
     "expo-constants": "~16.0.2",
     "expo-device": "~6.0.2",
@@ -44,8 +45,7 @@
     "react-native-vector-icons": "^10.1.0",
     "react-native-web": "~0.19.6",
     "react-redux": "^9.1.0",
-    "redux": "^5.0.1",
-    "expo-status-bar": "~1.12.1"
+    "redux": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
@@ -81,10 +81,6 @@
     "updateSnapshots": "jest -u --coverage=false"
   },
   "private": true,
-<<<<<<< HEAD
-  "name": "expo-boilerplate",
-=======
   "name": "bookingbike",
->>>>>>> e0fd3446b8fbe3076f3342840b4372277798e2d6
   "version": "1.0.0"
 }
