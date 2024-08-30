@@ -14,6 +14,7 @@ interface AppProviderProps {
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [deviceId, setDeviceId] = useState<string | undefined>(undefined);
 
+  
   return (
     <AppContext.Provider value={{ deviceId, setDeviceId }}>
       {children}
