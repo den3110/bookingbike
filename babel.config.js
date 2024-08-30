@@ -5,6 +5,12 @@ module.exports = function (api) {
     plugins: [
       "react-native-reanimated/plugin",
       [
+        "expo-notifications",
+        {
+          sounds: [".src/assets/sound/noti.wav"],
+        },
+      ],
+      [
         "module-resolver",
         {
           extensions: [".js", ".jsx", ".ts", ".tsx"],
